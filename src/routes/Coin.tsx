@@ -54,7 +54,7 @@ function Coin() {
       <Header>
         <Title>{state?.name || "Loading"}</Title>
       </Header>
-      {loading ? <Loader>loading</Loader> : null}
+      {loading ? <Loader>loading</Loader> : <span></span>}
     </Container>
   );
 }
