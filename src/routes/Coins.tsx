@@ -18,7 +18,10 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
 `;
-
+const Title = styled.h1`
+  font-size: 48px;
+  color: ${(props) => props.theme.accentColor};
+`;
 const CoinList = styled.ul``;
 
 const Coin = styled.li`
@@ -49,10 +52,6 @@ interface CoinInterface {
   type: string;
 }
 
-const Title = styled.h1`
-  font-size: 48px;
-  color: ${(props) => props.theme.accentColor};
-`;
 function Coins() {
   const [coins, setCoins] = useState<CoinInterface[]>([]);
   const [loading, setLoading] = useState(true);
@@ -75,7 +74,14 @@ function Coins() {
         <CoinList>
           {coins.map((coin) => (
             <Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
+              <Link
+                to={{
+                  pathname: `/${coin.id}`,
+                  state: { name: coin.name },
+                }}
+              >
+                {coin.name} &rarr;
+              </Link>
             </Coin>
           ))}
         </CoinList>
