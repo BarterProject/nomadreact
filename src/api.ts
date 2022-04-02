@@ -23,3 +23,9 @@ export function fetchCoinHistory(coinId: string) {
     `${BASE_URL}/coins/${coinId}/ohlcv/historical?start=${startDate}&end=${endDate}`
   ).then((response) => response.json());
 }
+
+export function fetchCoinExchange() {
+  return fetch(`${BASE_URL}/exchanges/binance/markets`).then((response) =>
+    response.json()
+  );
+}
