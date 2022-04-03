@@ -24,8 +24,8 @@ export function fetchCoinHistory(coinId: string) {
   ).then((response) => response.json());
 }
 
-export function fetchCoinExchange() {
-  return fetch(`${BASE_URL}/exchanges/binance/markets`).then((response) =>
-    response.json()
-  );
+export function fetchCoinExchange(coinId: string) {
+  return fetch(
+    `${BASE_URL}/coins/${coinId}/markets?quotes=BTC,ETH,USD,EUR,PLN,KRW,GBP,CAD,JPY`
+  ).then((response) => response.json());
 }
